@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TETRIS</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             display: flex;
             justify-content: center;
@@ -13,12 +17,15 @@
             margin: 0;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             font-family: Arial, sans-serif;
+            padding: 10px;
         }
 
         .container {
             display: flex;
             gap: 30px;
             align-items: flex-start;
+            width: 100%;
+            max-width: 600px;
         }
 
         .game-board {
@@ -30,6 +37,7 @@
             border: 3px solid #fff;
             border-radius: 5px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
         }
 
         .cell {
@@ -53,6 +61,7 @@
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.3);
             min-width: 150px;
+            flex: 1;
         }
 
         .info {
@@ -89,6 +98,7 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            width: 100%;
         }
 
         #pauseBtn {
@@ -121,6 +131,110 @@
 
         .instructions p {
             margin: 5px 0;
+        }
+
+        /* Mobile - tablets y pantallas pequeñas */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+
+            .game-board {
+                grid-template-columns: repeat(10, 20px);
+                padding: 8px;
+                gap: 0.5px;
+            }
+
+            .cell {
+                width: 20px;
+                height: 20px;
+            }
+
+            .controls {
+                width: 100%;
+                padding: 15px;
+                min-width: auto;
+            }
+
+            .info h1 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .score, .lines {
+                font-size: 14px;
+                margin: 5px 0;
+            }
+
+            .score-value, .lines-value {
+                font-size: 18px;
+            }
+
+            button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .instructions {
+                font-size: 11px;
+                margin-top: 15px;
+            }
+
+            .instructions p {
+                margin: 3px 0;
+            }
+        }
+
+        /* Móviles muy pequeños */
+        @media (max-width: 480px) {
+            .game-board {
+                grid-template-columns: repeat(10, 16px);
+                padding: 5px;
+            }
+
+            .cell {
+                width: 16px;
+                height: 16px;
+            }
+
+            .controls {
+                padding: 12px;
+                gap: 10px;
+            }
+
+            .info h1 {
+                font-size: 20px;
+                margin: 0 0 10px 0;
+            }
+
+            .score, .lines {
+                font-size: 12px;
+                margin: 3px 0;
+            }
+
+            .score-value, .lines-value {
+                font-size: 16px;
+            }
+
+            button {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .instructions {
+                font-size: 10px;
+                margin-top: 10px;
+            }
+
+            .instructions p {
+                margin: 2px 0;
+            }
         }
     </style>
 </head>
